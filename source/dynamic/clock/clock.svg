@@ -1,0 +1,131 @@
+<svg width="400" height="400"
+     viewBox="0 0 400 400" version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <g id="outter-circle">
+            <circle cx="200" cy="200" r="160" style="stroke: black; fill: none; stroke-width: 3"/>
+        </g>
+        <path id="inner-circle" d="M 200 55 A 145 145 0 0 0 200 345 A 145 145 1 0 0 200 55"
+            fill="none" stroke="gray" stroke-width="2" />
+        <g id="hour-scale">
+            <path d="M 200 200 v -150 L 195 40 h 10 L 200 50"
+                 fill="black" stroke="black" stroke-width="0"/>
+        </g>
+        <g id="hour-group">
+            <use xlink:href="#hour-scale" transform="rotate(30, 200, 200)"/>
+            <use xlink:href="#hour-scale" transform="rotate(60, 200, 200)"/>
+            <use xlink:href="#hour-scale" transform="rotate(90, 200, 200)"/>
+            <use xlink:href="#hour-scale" transform="rotate(120, 200, 200)"/>
+        </g>
+        <g id="minute-scale">
+            <path d="M 0 145 v 15"
+                 fill="" stroke="black" stroke-width="1" />
+        </g>
+        <g id="minute-group">
+            <use xlink:href="#minute-scale" x="200" y="200" transform="rotate(6, 200, 200)"/>
+            <use xlink:href="#minute-scale" x="200" y="200" transform="rotate(12, 200, 200)"/>
+            <use xlink:href="#minute-scale" x="200" y="200" transform="rotate(18, 200, 200)"/>
+            <use xlink:href="#minute-scale" x="200" y="200" transform="rotate(24, 200, 200)"/>
+        </g>
+        <g id="minute-patch">
+            <use xlink:href="#minute-group" />
+            <use xlink:href="#minute-group" transform="rotate(30, 200, 200)"/>
+            <use xlink:href="#minute-group" transform="rotate(60, 200, 200)"/>
+            <use xlink:href="#minute-group" transform="rotate(90, 200, 200)"/>
+        </g>
+        <g id="second-hand">
+            <circle cx="0" cy="60" r="5" />
+            <path d="M 0 60 L 0 -120 z"
+                 fill="black" stroke="black" stroke-width="2" />
+        </g>
+        <g id="minute-hand">
+            <path d="M -6 0 L 6 0 L 2 -110 -2 -110 z"
+                 fill="" stroke="" stroke-width="" />
+        </g>
+        <g id="hour-hand">
+            <path d="M -10 0 L 10 0 L 3 -90 -3 -90 z"
+                 fill="" stroke="" stroke-width="" />
+        </g>
+    </defs>
+    <use xlink:href="#outter-circle" />
+    <use xlink:href="#inner-circle" />
+    <use xlink:href="#hour-group"/>
+    <use xlink:href="#hour-group" transform="rotate(120, 200, 200)"/>
+    <use xlink:href="#hour-group" transform="rotate(240, 200, 200)"/>
+    <use xlink:href="#minute-patch"/>
+    <use xlink:href="#minute-patch" transform="rotate(120, 200, 200)"/>
+    <use xlink:href="#minute-patch" transform="rotate(240, 200, 200)"/>
+    <g >
+        <text x="185" y="80" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            12
+        </text>
+        <text x="260" y="100" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            1
+        </text>
+        <text x="305" y="145" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            2
+        </text>
+        <text x="325" y="210" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            3
+        </text>
+        <text x="305" y="275" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            4
+        </text>
+        <text x="260" y="320" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            5
+        </text>
+        <text x="190" y="340" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            6
+        </text>
+        <text x="125" y="325" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            7
+        </text>
+        <text x="80" y="280" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            8
+        </text>
+        <text x="60" y="210" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            9
+        </text>
+        <text x="75" y="145" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            10
+        </text>
+        <text x="120" y="100" style="font-size: 20pt; font-weight: bold; font-family: Microsoft YaHei">
+            11
+        </text>
+    </g>
+    <g transform="translate(200, 200)">
+        <use id="hour" xlink:href="#hour-hand" />
+    </g>
+    <g transform="translate(200, 200)">
+        <use id="minute" xlink:href="#minute-hand" />
+    </g>
+    <g transform="translate(200, 200)">
+        <use id="second" xlink:href="#second-hand" />
+    </g>
+    <g >
+        <circle cx="200" cy="200" r="16" style="fill: black;"/>
+    </g>
+    <g >
+        <circle cx="200" cy="200" r="12" style="fill: white;"/>
+    </g>
+    <g >
+        <circle cx="200" cy="200" r="4" style="fill: black;"/>
+    </g>
+    <script type="text/javascript">
+        <![CDATA[
+            let hour = document.getElementById('hour')
+            let minute = document.getElementById('minute')
+            let second = document.getElementById('second')
+            setInterval(() => {
+                let date = new Date()
+                hour.setAttribute('transform', `rotate(${date.getHours()/12.0 
+                * 360 + date.getMinutes() / 60.0 * 30})`)
+                minute.setAttribute('transform', `rotate(${date.getMinutes()/ 
+                60 * 360 + date.getSeconds()/60.0 * 6 })`)
+                second.setAttribute('transform', `rotate(${date.getSeconds()/ 
+                60 * 360})`)
+            }, 1000)
+        ]]>
+    </script>
+</svg>
