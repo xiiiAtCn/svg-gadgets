@@ -3,6 +3,12 @@
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
+    <!-- 待改进:
+        1. 样式
+        2. 其他显示
+        3. 代码精简
+     -->
+        <title>clock</title>
         <g id="outter-circle">
             <circle cx="200" cy="200" r="160" style="stroke: black; fill: none; stroke-width: 3"/>
         </g>
